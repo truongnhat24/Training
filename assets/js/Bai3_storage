@@ -1,0 +1,100 @@
+import arrData from "./data.js";
+
+$(document).ready(function () {
+    const lengthArray = arrData.length;
+    const lengthKeys = Object.keys(arrData[1]).length;
+    const arrKeys = [];
+    let currentPage = 1;
+    let currentValue = $(".table-show").val();
+    let pageNum = 0;
+    let tableHead = "";
+    let tableBody = "";
+
+    {
+        let tableHeadContent = "";
+        for (let i = 0; i < lengthKeys; i++) {
+            tableHeadContent += "<th>" + Object.keys(arrData[1])[i] + "</th>";
+            arrKeys[i] = Object.keys(arrData[1])[i];
+        }
+        tableHead = "<tr>" + tableHeadContent + "</tr>";
+    }
+
+    const changePage = function() {
+        if ( $(this).attr("class") === "prev"){
+            console.log(123);
+            currentPage -= 1;
+        } else if ($(this).attr("class") === "next") {
+            console.log(currentPage);
+            currentPage += 1;
+        } else {
+            currentPage = $(this).index() + 1;
+        }
+        createPage(currentValue, currentPage);
+        $(".table-foot .list-button button.active").removeClass("active");
+        $(".table-foot .list-button button:eq(" + (currentPage - 1) + ")").addClass("active");
+    }
+
+
+    // const nextPage = () => {
+    //     currentPage += 1;
+    //     createPage(currentValue, currentPage);
+    //     $(".table-foot .list-button button.active").removeClass("active");
+    //     $(".table-foot .list-button button:eq(" + (currentPage - 1) + ")").addClass("active");
+    // }
+    // const prePage = () => {
+    //     currentPage -= 1;
+    //     createPage(currentValue, currentPage);
+    //     $(".table-foot .list-button button.active").removeClass("active");
+    //     $(".table-foot .list-button button:eq(" + (currentPage - 1) + ")").addClass("active");
+    // }
+    // const anyPage = function () {
+    //     currentPage = $(this).index() + 1;
+    //     createPage(currentValue, currentPage);
+    //     $(".table-foot .list-button button.active").removeClass("active");
+    //     $(".table-foot .list-button button:eq(" + (currentPage - 1) + ")").addClass("active");
+    // }
+    const addPageButton = (currentValue, currentPage) => {
+        pageNum = Math.ceil(lengthArray / currentValue);
+        let btn = "";
+        for (let i = 1; i <= pageNum; i++) {
+            btn += "<li><button " + (currentPage === i ? "class='active'" : "") + ">" + i + "</button></li>";
+        }
+        $(".table-foot .list-button").html(btn);
+    }
+    addPageButton(currentValue, currentPage);
+
+    const createPage = (currentValue, currentPage) => {
+        tableBody = "";
+        for (let i = (currentPage - 1) * currentValue; i < currentValue * currentPage; i++) {
+            if (i >= lengthArray) break;
+            let tableBodyContent = "";
+            for (let j = 0; j < arrKeys.length; j++) {
+                tableBodyContent += "<td>" + arrData[i][arrKeys[j]] + "</td>";
+            }
+            tableBody += "<tr>" + tableBodyContent + "</tr>";
+        }
+        let table = tableHead + tableBody + tableHead;
+
+        $("table").html(table);
+    }
+    createPage(currentValue, currentPage);
+
+    $(".table-show").change(() => {
+        currentValue = $(".table-show").val();
+        addPageButton(currentValue, 1);
+        createPage(currentValue, 1);
+        currentPage = 1;
+        // $(".table-foot").on("click", ".next", changePage);
+        // $(".table-foot").on("click", ".prev", changePage);
+        // changePage();
+    })
+
+    // $(".table-foot .list-button").on("click", "li", anyPage);
+    // $(".table-foot").on("click", ".next", nextPage);
+    // $(".table-foot").on("click", ".prev", prePage);
+    
+    $(".table-foot .list-button").on("click", "li", changePage);
+    $(".table-foot").on("click", ".next", changePage);
+    $(".table-foot").on("click", ".prev", changePage);
+})
+

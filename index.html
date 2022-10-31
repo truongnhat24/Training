@@ -16,7 +16,7 @@
                 <div class="head-select">
                     <label>
                         Show
-                        <select name="table-show" class="table-show">
+                        <select name="table" class="table-show">
                             <option value="10">10</option>
                             <option value="25">25</option>
                             <option value="50">50</option>
@@ -28,7 +28,7 @@
                 <div class="head-search">
                     <label>
                         Search
-                        <input type="search">
+                        <input type="search" class="search-input">
                     </label>
                 </div>
             </div>               
@@ -36,19 +36,23 @@
             </table>
             <div class="table-foot">
                 <div class="foot-show-entries">
-                    <p>Showing 1 to 10 of 57 entries</p>
+                    <!-- <p>Showing 1 to 10 of 57 entries</p> -->
                 </div>
                 <ul>
-                    <li>
-                        <a href="#">Previous</a>
+                    <li class="prev">
+                        <button >Previous</button>
                     </li>
-                    <li>
-                        <a href="#">Next</a>
+
+                    <ul class="list-button">
+                    
+                    </ul>
+                   
+                    <li class="next">
+                        <button >Next</button>
                     </li>
                 </ul>
             </div>
         </div>
-        
     </section>
       
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

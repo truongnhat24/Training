@@ -4,7 +4,7 @@ const arrData =
         "Rendering engine" : "Trident",
         "Browser" : "Internet Explorer 4.0",
         "Platform(s)" : "Win 95+",
-        "Engine version" : " 4",
+        "Engine version" : "4",
         "CSS grade" : "X",
     },
 
@@ -459,3 +459,46 @@ const arrData =
 
 
 export default arrData;
+
+
+
+// const tableSort = () => {
+    //     // arrData.sort((a, b) => (a["Engine version"] > b["Engine version"]) ? 1 : -1);
+    //     arrData.sort((a, b) => {
+    //         if (typeof a["Engine version"] === "number" && typeof b["Engine version"] === "number") {
+    //             return a["Engine version"] - b["Engine version"];
+    //         }
+    //         if (typeof a["Engine version"] === "number" && typeof b["Engine version"] === "string") {
+    //             return -1;
+    //         }
+    //         if (typeof a["Engine version"] === "string" && typeof b["Engine version"] === "number") {
+    //             return 1;
+    //         }
+    //         if (typeof a["Engine version"] === "string" && typeof b["Engine version"] === "string") {
+    //             if (a["Engine version"] < b["Engine version"]) return -1;
+    //             else return 1;
+    //         }
+    //     })
+    // }
+
+    // tableSort();
+
+
+
+    // const checkStr = (strBase, strInput) => {
+    //     for (let m = 0; m < strBase.length; m++){
+    //         if( strBase[m] === strInput[0]){
+    //             let temp = 1;
+    //             for ( let n = 1; n < strInput.length; n++){
+    //                 if( strInput[n] !== strBase[m+n]) {
+    //                     break;
+    //                 } else temp++;
+    //             }
+    //             if ( temp === strInput.length) {
+    //                 return true;
+    //             }
+    //         }
+    //     }
+    //     return false;
+    // }
+    

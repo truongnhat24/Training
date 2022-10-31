@@ -13,7 +13,7 @@ a {
     text-decoration: none;
 }
 
-ul {
+ul, li {
     list-style: none;
     font-size: 1.6rem;
 }
@@ -61,6 +61,7 @@ h3 {
 
 .table-main td {
     width: 20%;
+    height: 30px;
 }
 
 .table-foot {
@@ -76,13 +77,33 @@ h3 {
 
 .table-foot ul li {
     display: inline-block;
-    padding: 6px 12px;
-    border: 1px solid #666;
+}
+
+.table-foot ul li button.dis {
+    cursor: not-allowed;
+    background-color: #fff;
+}
+
+.table-foot ul button:hover {
     background-color: #e2e2e2;
 }
 
-.table-foot ul a {
+.table-foot ul button.active {
+    background-color: #337ab7;
+    color: #fff;
+}
+
+.table-foot ul button {
+    padding: 6px 12px;
+    background-color: #eeeded;
+    border: 1px solid #666;
     color: #000;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+table td.mid-col {
+    text-align: center;
 }
 
 
