@@ -13,7 +13,7 @@ $(document).ready(function () {
     {
         let tableHeadContent = "";
         for (let i = 0; i < lengthKeys; i++) {
-            tableHeadContent += "<th alt="+i+">" + Object.keys(arrData[1])[i] + "</th>";
+            tableHeadContent += "<th alt=" + i + ">" + Object.keys(arrData[1])[i] + "</th>";
             arrKeys[i] = Object.keys(arrData[1])[i];
         }
         tableHead = "<tr>" + tableHeadContent + "</tr>";
@@ -104,33 +104,76 @@ $(document).ready(function () {
     });
 
     //sort
-    const quicksort = (sortArr, k) => {
-        if (sortArr.length <= 1) return sortArr;
-        else {
-            let i = 0, j = sortArr.length-1, pivot = sortArr[0][arrKeys[k]];
-            while (i < j) {
-                while (sortArr[i][arrKeys[k]] < pivot) { i++; }
-                while (sortArr[j][arrKeys[k]] > pivot) { j--; }
-                if (i <= j) {
-                    if (i < j) {
-                        let temp = sortArr[i];
-                        sortArr[i] = sortArr[j];
-                        sortArr[j] = temp;
-                    }
-                    i++; j--;
+    const quicksort = function (L, H, thIndex) {
+        if (L >= H) { return }
+        let i = L, j = H, pivot = currentArray[0][arrKeys[thIndex]].toLowerCase();
+        while (i <= j) {
+            while (currentArray[i][arrKeys[thIndex]].toLowerCase() < pivot) { i++; }
+            while (currentArray[j][arrKeys[thIndex]].toLowerCase() > pivot) { j--; }
+            if (i <= j) {
+                if (i < j) {
+                    let temp = currentArray[i];
+                    currentArray[i] = currentArray[j];
+                    currentArray[j] = temp;
                 }
+                i++; j--;
             }
-            quicksort(sortArr, 0, j); quicksort(sortArr, i, sortArr.length-1);
+            quicksort(L, j, thIndex); quicksort(i, H, thIndex);
         }
-        return sortArr;
+        return currentArray;
     }
-    $(".table-main tr th").click(function(){
-        let k = $(this).attr("alt");
-        let sortArray = quicksort(currentArray, k);
+
+    $(".table-main tr th").click(function () {
+        let thIndex = $(this).attr("alt");
+        let sortArray = quicksort(0, currentArray.length - 1, thIndex);
         console.log(sortArray);
     })
+
+    let items = [5, 3, 7, 6, 2, 9];
+    const swap = (items, leftIndex, rightIndex) => {
+        let temp = items[leftIndex];
+        items[leftIndex] = items[rightIndex];
+        items[rightIndex] = temp;
+    }
+    const partition = (items, left, right) => {
+        let pivot = items[Math.floor((right + left) / 2)], 
+            i = left, 
+            j = right; 
+        while (i <= j) {
+            while (items[i] < pivot) {
+                i++;
+            }
+            while (items[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                swap(items, i, j); 
+                i++;
+                j--;
+            }
+        }
+        return i;
+    }
+
+    const quickSort = (items, left, right) => {
+        let index;
+        if (items.length > 1) {
+            index = partition(items, left, right); 
+            if (left < index - 1) { 
+                quickSort(items, left, index - 1);
+            }
+            if (index < right) { 
+                quickSort(items, index, right);
+            }
+        }
+        return items;
+    }
+    let sortedArray = quickSort(items, 0, items.length - 1);
+    console.log(sortedArray); //prints [2,3,5,6,7,9]
 
     $(".table-foot .list-button").on("click", "li", changePage);
     $(".table-foot").on("click", ".next", changePage);
     $(".table-foot").on("click", ".prev", changePage);
 })
+
+
