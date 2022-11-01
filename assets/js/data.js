@@ -4,7 +4,7 @@ const arrData =
         "Rendering engine" : "Trident",
         "Browser" : "Internet Explorer 4.0",
         "Platform(s)" : "Win 95+",
-        "Engine version" : "45",
+        "Engine version" : "4",
         "CSS grade" : "X",
     },
 
@@ -528,7 +528,7 @@ export default arrData;
 
 
 
-    
+
     // const partition = (Array, left, right, thIndex) => {
     //     let pivot = Array[Math.floor((right + left) / 2)][arrKeys[thIndex]].toLowerCase(),
     //         i = left,

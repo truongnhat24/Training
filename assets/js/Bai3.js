@@ -96,6 +96,7 @@ $(document).ready(function () {
 
     $(".head-search").on("keyup", "input", () => {
         let searchVal = $(".search-input").val().toLowerCase();
+        currentPage = 1;
         currentArray = search(searchVal);
         lengthArray = currentArray.length;
         pageNum = Math.ceil(lengthArray / currentValue);
@@ -104,6 +105,22 @@ $(document).ready(function () {
     });
 
     //sort
+    const compare = (a, b, c) => {
+        if (isNaN(parseFloat(a)) || isNaN(parseFloat(b))) {
+            if (c === 1) {
+                return a > b;
+            } else {
+                return a < b;
+            }
+        } else {
+            if (c === 1) {
+                return parseFloat(a) > parseFloat(b);
+            } else {
+                return parseFloat(a) < parseFloat(b);
+            }
+        }
+    }
+
     const quickSort = (Array, left, right, thIndex) => {
         let pivot = Array[Math.floor((right + left) / 2)][arrKeys[thIndex]].toLowerCase(),
             i = left,
@@ -111,17 +128,17 @@ $(document).ready(function () {
 
         while (i <= j) {
             if (rev === 1) {
-                while (Array[i][arrKeys[thIndex]].toLowerCase() < pivot) {
+                while (compare(Array[i][arrKeys[thIndex]].toLowerCase(), pivot, -1)) {
                     i++;
                 }
-                while (Array[j][arrKeys[thIndex]].toLowerCase() > pivot) {
+                while (compare(Array[j][arrKeys[thIndex]].toLowerCase(), pivot, 1)) {
                     j--;
                 }
             } else {
-                while (Array[i][arrKeys[thIndex]].toLowerCase() > pivot) {
+                while (compare(Array[i][arrKeys[thIndex]].toLowerCase(), pivot, 1)) {
                     i++;
                 }
-                while (Array[j][arrKeys[thIndex]].toLowerCase() < pivot) {
+                while (compare(Array[j][arrKeys[thIndex]].toLowerCase(), pivot, -1)) {
                     j--;
                 }
             }
@@ -145,12 +162,10 @@ $(document).ready(function () {
         }
         return Array;
     }
-
     let rev = 1;
     $(".table-main").on("click", "th", function () {
         let thIndex = $(this).attr("alt");
         currentArray = quickSort(currentArray, 0, currentArray.length - 1, thIndex);
-        console.log(currentArray);
         addPageButton();
         createPage(currentArray);
         rev *= (-1);
