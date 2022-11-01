@@ -4,7 +4,7 @@ const arrData =
         "Rendering engine" : "Trident",
         "Browser" : "Internet Explorer 4.0",
         "Platform(s)" : "Win 95+",
-        "Engine version" : "4",
+        "Engine version" : "45",
         "CSS grade" : "X",
     },
 
@@ -502,3 +502,74 @@ export default arrData;
     //     return false;
     // }
     
+
+ // const quicksort = (currentArray, L, H, thIndex) => {
+    //     if (L >= H) { return }
+    //     let i = L, j = H, pivot = currentArray[Math.floor((L + H) / 2)][arrKeys[thIndex]].toLowerCase();
+    //     while (i <= j) {
+    //         while (currentArray[i][arrKeys[thIndex]].toLowerCase() < pivot) {
+    //             i++;
+    //         }
+    //         while (currentArray[j][arrKeys[thIndex]].toLowerCase() > pivot) {
+    //             j--;
+    //         }
+    //         if (i <= j) {
+    //             if (i < j) {
+    //                 let temp = currentArray[i];
+    //                 currentArray[i] = currentArray[j];
+    //                 currentArray[j] = temp;
+    //             }
+    //             i++; j--;
+    //         }
+    //         quicksort(currentArray, L, j, thIndex); quicksort(currentArray, i, H, thIndex);
+    //     }
+    //     return currentArray;
+    // }
+
+
+
+    
+    // const partition = (Array, left, right, thIndex) => {
+    //     let pivot = Array[Math.floor((right + left) / 2)][arrKeys[thIndex]].toLowerCase(),
+    //         i = left,
+    //         j = right;
+    //     while (i <= j) {
+    //         if (rev === 1) {
+    //             while (Array[i][arrKeys[thIndex]].toLowerCase() < pivot) {
+    //                 i++;
+    //             }
+    //             while (Array[j][arrKeys[thIndex]].toLowerCase() > pivot) {
+    //                 j--;
+    //             }
+    //         } else {
+    //             while (Array[i][arrKeys[thIndex]].toLowerCase() > pivot) {
+    //                 i++;
+    //             }
+    //             while (Array[j][arrKeys[thIndex]].toLowerCase() < pivot) {
+    //                 j--;
+    //             }
+    //         }
+    //         if (i <= j) {
+    //             let temp = Array[i];
+    //             Array[i] = Array[j];
+    //             Array[j] = temp;
+    //             i++;
+    //             j--;
+    //         }
+    //     }
+    //     return i;
+    // }
+
+    // const quickSort = (Array, left, right, thIndex) => {
+    //     let index;
+    //     if (Array.length > 1) {
+    //         index = partition(Array, left, right, thIndex);
+    //         if (left < index - 1) {
+    //             quickSort(Array, left, index - 1, thIndex);
+    //         }
+    //         if (index < right) {
+    //             quickSort(Array, index, right, thIndex);
+    //         }
+    //     }
+    //     return Array;
+    // }
