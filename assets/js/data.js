@@ -58,7 +58,7 @@ const arrData =
 
     {
         "Rendering engine" : "Gecko",
-        "Browser" : "Firefox 1.5",
+        "Browser" : "Firefox 10.5",
         "Platform(s)" : "Win 98+ / OSX.2+",
         "Engine version" : "1.8",
         "CSS grade" : "A",
