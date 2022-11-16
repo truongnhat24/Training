@@ -571,5 +571,5 @@ export default arrData;
     //             quickSort(Array, index, right, thIndex);
     //         }
     //     }
-    //     return Array;
+    //     return Array;jsdaiofjad
     // }
